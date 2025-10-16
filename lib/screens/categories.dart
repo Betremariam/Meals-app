@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:meals/data/dummy_data.dart';
+import 'package:meals/widgets/category_grid_item.dart';
 
-class catagoriesScreen extends StatelessWidget {
-  const catagoriesScreen({super.key});
-
+class CatagoriesScreen extends StatelessWidget {
+  const CatagoriesScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return GridView(
@@ -14,12 +15,8 @@ class catagoriesScreen extends StatelessWidget {
         mainAxisSpacing: 20,
       ),
       children: [
-        Text("1"),
-        Text("2"),
-        Text("3"),
-        Text("4"),
-        Text("5"),
-        Text("6"),
+        for (final category in availableCategories)
+          CategoryGridItem(category: category),
       ],
     );
   }

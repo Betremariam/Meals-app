@@ -10,6 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Meal app", home: catagoriesScreen());
+    return MaterialApp(title: "Meal app", home: CatagoriesScreen());
   }
 }
