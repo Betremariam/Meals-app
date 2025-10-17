@@ -8,9 +8,7 @@ class FiltersScreen extends StatefulWidget {
   final Map<Filter, bool> currentFilters;
 
   @override
-  State<FiltersScreen> createState() {
-    return _FiltersScreenState();
-  }
+  State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
@@ -32,16 +30,17 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Your Filters')),
-
-      body: WillPopScope(
-        onWillPop: () async {
+      body: PopScope(
+        // Prevents automatic pop
+        canPop: false,
+        onPopInvoked: (didPop) {
+          if (didPop) return; // if system already handled pop, skip
           Navigator.of(context).pop({
             Filter.glutenFree: _glutenFreeFilterSet,
             Filter.lactoseFree: _lactoseFreeFilterSet,
             Filter.vegetarian: _vegetarianFilterSet,
             Filter.vegan: _veganFilterSet,
           });
-          return false;
         },
         child: Column(
           children: [
